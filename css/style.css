@@ -1,0 +1,301 @@
+/* 
+  全体
+*/
+:root {
+  font-size: 100%;
+  --screen-width: 100vw;
+  --screen-height: 728px;
+  --head-height: 28px;
+  --btn-width: 49px;
+}
+body {
+  font-size: 100%;
+  font-family: sans-serif;
+  background: hsl(50, 100%, 90%);
+  color: hsl(50, 100%, 20%);
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.head-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 7px;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  height: 28px;
+  background: #fff;
+}
+.head-container h1 {
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+}
+.auth {
+  display: inline-block;
+  background: linear-gradient(transparent 80%, hsl(200, 100%, 50%) 0%);
+  font-weight: bold;
+  margin-left: 7px;
+  padding: 0 7px;
+  cursor: pointer;
+  user-select: none;
+}
+.app-container {
+  height: calc(var(--screen-height) - var(--head-height));
+}
+.container {
+  position: relative;
+  background: inherit;
+  box-sizing: border-box;
+  padding-top: 21px;
+}
+.mask {
+  z-index: 5;
+  position: absolute;
+  top: var(--head-height);
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.hidden {
+  display: none;
+}
+.disabled {
+  opacity: 0.2;
+}
+/* 
+  リスト
+*/
+.list-box-container {
+  position: absolute;
+  background: hsl(50, 100%, 50%);
+  top: var(--head-height);
+  bottom: 0;
+  left: 0;
+  right: var(--btn-width);
+  padding: 14px;
+  z-index: 10;
+  transition: 0.3s;
+}
+.slide {
+  transform: translate(calc(var(--btn-width) - var(--screen-width) + 3px), 0px);
+}
+.list-tab {
+  position: absolute;
+  background: hsl(50, 100%, 50%);
+  width: var(--btn-width);
+  height: var(--btn-width);
+  top: 7px;
+  right: calc(var(--btn-width) * -1);
+  z-index: 11;
+  text-align: center;
+  line-height: var(--btn-width);
+  cursor: pointer;
+  user-select: none;
+  border-radius: 0 50% 50% 0;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+}
+.current-list-box,
+.sub-list-box {
+  margin: 0;
+  padding: 0;
+}
+.scroll {
+  overflow-y: scroll;
+}
+.list-item-container {
+  background: hsl(200, 100%, 90%);
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0;
+  margin-bottom: 7px;
+  padding: 0 7px;
+  display: flex;
+}
+.list-item {
+  margin: 0;
+  padding: 0;
+  flex: auto 1 1;
+  cursor: pointer;
+  user-select: none;
+}
+.list-item-subject {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+}
+.list-item-updated {
+  margin: 0;
+  font-size: 0.7rem;
+  padding: 0;
+}
+.current {
+  border-left: 5px solid hsl(200, 100%, 50%);
+  padding-left: 2px;
+  margin-bottom: 21px;
+}
+.item-delete-btn {
+  flex: 42px 0 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px dotted hsl(50, 100%, 30%);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: var(--btn-width);
+  cursor: pointer;
+  user-select: none;
+}
+
+/*
+  メモ本体
+*/
+.memo-container {
+  position: absolute;
+  top: var(--head-height);
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.memo-body-container {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  padding: 14px;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+.memo-date-container {
+  margin: 0 63px 0 0;
+  padding: 0;
+  font-size: 0.7rem;
+  text-align: right;
+  flex: 42px 0 0;
+}
+.memo-created:before {
+  content: 'created: ';
+}
+.memo-updated:before {
+  content: 'updated: ';
+}
+.memo-subject-container,
+.memo-content-container {
+  position: relative;
+  margin: 7px 0;
+  padding: 0;
+}
+.memo-subject-container {
+  flex: 42px 0 0;
+}
+.memo-content-container {
+  flex: 180px 0 0;
+  display: flex;
+}
+.memo-content-container textarea {
+  border: 1px solid hsl(50, 100%, 30%);
+  border-radius: 3px;
+  resize: none;
+  font-size: 1.2rem;
+  /* color: hsl(50, 100%, 20%); */
+}
+.input-area {
+  display: block;
+  margin: 0;
+  padding: 0 7px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+.memo-subject {
+  border: none;
+  background: inherit;
+  border-bottom: 1px solid hsl(50, 100%, 30%);
+  padding-bottom: 0;
+  font-size: 1.5rem;
+}
+.memo-subject:focus {
+  background: #fff;
+}
+
+.memo-btn-container {
+  margin-bottom: 7px;
+  flex: 42px 0 0;
+}
+.memo-new-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  background: hsl(50, 100%, 30%);
+  border-radius: 3px;
+  color: #fff;
+  top: 7px;
+  right: 14px;
+  width: var(--btn-width);
+  height: var(--btn-width);
+  cursor: pointer;
+  user-select: none;
+  z-index: 2;
+  font-size: 2rem;
+  line-height: 42px;
+}
+.memo-save-btn {
+  margin: 0 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: hsl(50, 100%, 30%);
+  border-radius: 3px;
+  color: #fff;
+  width: calc(var(--btn-width) * 1.5);
+  height: var(--btn-width);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 
+  PC対応
+  768px〜1024px
+*/
+@media (min-width: 768px) {
+  .app-container {
+    display: flex;
+    height: 700px;
+  }
+  .list-box-container {
+    position: static;
+    flex: 350px 0 1;
+    transition: 0s;
+  }
+  .list-tab {
+    display: none;
+  }
+  .slide {
+    transform: none;
+  }
+  .memo-container {
+    position: relative;
+    top: 0;
+    flex: 500px 1 1;
+  }
+  .memo-content-container {
+    flex: 400px 0 0;
+  }
+}
+/* 
+  PC対応
+  1024px〜
+*/
+@media (min-width: 1024px) {
+  .app-container {
+    display: flex;
+    height: 700px;
+    width: 1024px;
+    margin: 0 auto;
+  }
+}
