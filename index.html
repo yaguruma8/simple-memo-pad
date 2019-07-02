@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>MySimpleMemoPad</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- firebase コア(app) + DB(firestore) + 認証(auth) -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js" defer></script>
+    <!-- 日付処理用ライブラリ moment.js + ロケール -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/ja.js"
+      defer
+    ></script>
+    <!-- main.js -->
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <!-- 2019/7/2 ver0.1 -->
+    <div class="head-container">
+      <h1>Simple Memo Pad</h1>
+      <div>
+        <div id="login-btn" class="auth">login</div>
+        <div id="logout-btn" class="auth hidden">logout</div>
+      </div>
+    </div>
+    <div id="mask" class="mask hidden"></div>
+    <div id="app" class="app-container">
+      <!-- リストボックス -->
+      <div id="list-box-container" class="container list-box-container slide">
+        <div id="list-open-btn" class="list-tab">&gt;</div>
+        <div id="list-close-btn" class="list-tab hidden">&lt;</div>
+        <ul id="current-list-box" class="current-list-box"></ul>
+        <ul id="sub-list-box" class="sub-list-box"></ul>
+      </div>
+      <!-- メモ本体 -->
+      <div class="container memo-container">
+        <div id="memo-new-btn" class="memo-new-btn disabled">&plus;</div>
+        <div class="memo-body-container">
+          <div class="memo-date-container">
+            <div id="memo-created" class="memo-created"></div>
+            <div id="memo-updated" class="memo-updated"></div>
+          </div>
+          <div class="memo-subject-container">
+            <input type="text" id="memo-subject" class="input-area memo-subject" placeholder="(untitled)" />
+          </div>
+          <div class="memo-content-container">
+            <textarea id="memo-content" class="input-area" cols="" rows=""></textarea>
+          </div>
+          <div class="memo-btn-container">
+            <div id="memo-save-btn" class="memo-save-btn disabled">保存</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
